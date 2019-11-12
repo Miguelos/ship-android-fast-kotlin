@@ -11,7 +11,7 @@ class GithubUserActivityUI : AnkoComponent<GithubUserActivity> {
             padding = 45
             owner.userImage = simpleDraweeView().lparams(width = 400, height = 400) {
                 centerHorizontally()
-            };
+            }
         }
     }
 }

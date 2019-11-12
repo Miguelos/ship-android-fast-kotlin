@@ -1,6 +1,6 @@
 package com.example.app.domain.interactor.github
 
-import android.support.annotation.NonNull
+import androidx.annotation.NonNull
 import com.example.app.domain.exception.InvalidUsernameException
 import com.example.app.domain.executor.PostExecutionThread
 import com.example.app.domain.executor.ThreadExecutor

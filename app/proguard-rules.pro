@@ -22,10 +22,6 @@
     rx.internal.util.atomic.LinkedQueueNode consumerNode;
 }
 
-#Support library
--keep class android.support.v7.widget.LinearLayoutManager { *; }
--keep class android.support.v7.widget.SearchView { *; }
-
 #Dagger
 -dontwarn dagger.internal.codegen.**
 -keepclassmembers,allowobfuscation class * {

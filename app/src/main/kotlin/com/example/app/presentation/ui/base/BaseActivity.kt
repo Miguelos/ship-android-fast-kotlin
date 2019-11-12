@@ -1,6 +1,6 @@
 package com.example.app.presentation.ui.base
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.app.presentation.AndroidApplication
 import com.example.app.presentation.di.components.ActivityComponent
 import com.example.app.presentation.di.modules.ActivityModule

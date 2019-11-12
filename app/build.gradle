@@ -1,7 +1,11 @@
+repositories {
+  google()
+}
 buildscript {
   repositories {
     jcenter()
     mavenCentral()
+    google()
   }
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
@@ -11,6 +15,7 @@ buildscript {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
 
@@ -111,54 +116,42 @@ dependencies {
   def presentationTestDependencies = rootProject.ext.presentationTestDependencies
   def dataDependencies = rootProject.ext.dataDependencies
 
-  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
   kapt presentationDependencies.daggerCompiler
-  compile presentationDependencies.dagger
+  implementation presentationDependencies.dagger
 
-  compile presentationDependencies.supportRecyclerView
-  compile presentationDependencies.supportCardView
-  compile presentationDependencies.supportDesign
-  compile presentationDependencies.supportAppCompat
-  compile presentationDependencies.support
+  implementation presentationDependencies.material
 
-  compile presentationDependencies.fresco
-  compile presentationDependencies.frescoOkhttp
+  implementation presentationDependencies.fresco
+  implementation presentationDependencies.frescoOkhttp
 
-  compile presentationDependencies.timber
+  implementation presentationDependencies.timber
 
-  compile presentationDependencies.rxJava
-  compile presentationDependencies.rxAndroid
-  compile presentationDependencies.rxKotlin
+  implementation presentationDependencies.rxJava
+  implementation presentationDependencies.rxAndroid
+  implementation presentationDependencies.rxKotlin
 
-  compile presentationDependencies.ankoSdk
-  compile presentationDependencies.ankoSupport
-  compile presentationDependencies.ankoAppcompat
-  compile presentationDependencies.ankoDesign
-  compile presentationDependencies.ankoRecyclerview
-  compile presentationDependencies.ankoCards
+  implementation presentationDependencies.ankoSdk
+  implementation presentationDependencies.ankoSupport
+  implementation presentationDependencies.ankoAppcompat
+  implementation presentationDependencies.ankoDesign
+  implementation presentationDependencies.ankoRecyclerview
+  implementation presentationDependencies.ankoCards
 
-  debugCompile presentationDependencies.leakcanaryDebug
-  stageCompile presentationDependencies.leakcanaryRelease
-  releaseCompile presentationDependencies.leakcanaryRelease
+  debugImplementation presentationDependencies.leakcanaryDebug
 
-  provided presentationDependencies.javaxAnnotation
+  compileOnly presentationDependencies.javaxAnnotation
 
-  compile dataDependencies.retrofit2
-  compile dataDependencies.retrofit2MoshiConverter
-  compile dataDependencies.retrofit2RxAdapter
-  compile dataDependencies.supportAnnotations
-  compile dataDependencies.okHttpLoggingInterceptor
-  compile dataDependencies.moshi
+  implementation dataDependencies.retrofit2
+  implementation dataDependencies.retrofit2MoshiConverter
+  implementation dataDependencies.retrofit2RxAdapter
+  implementation dataDependencies.okHttpLoggingInterceptor
+  implementation dataDependencies.moshi
 
-  androidTestCompile presentationTestDependencies.mockito
-  androidTestCompile presentationTestDependencies.dexmaker
-  androidTestCompile presentationTestDependencies.dexmakerMockito
-  androidTestCompile presentationTestDependencies.espresso
-  androidTestCompile presentationTestDependencies.espressoIntents
-  androidTestCompile presentationTestDependencies.testingRunner
-  androidTestCompile presentationTestDependencies.testingRules
-  androidTestCompile presentationTestDependencies.supportAnnotations
+  androidTestImplementation presentationTestDependencies.mockito
+  androidTestImplementation presentationTestDependencies.dexmaker
+  androidTestImplementation presentationTestDependencies.dexmakerMockito
 }
 
 kapt {

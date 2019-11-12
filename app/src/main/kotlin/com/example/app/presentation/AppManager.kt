@@ -6,7 +6,7 @@ import com.example.app.BuildConfig
 import com.example.app.presentation.utils.crashlibrary.CrashReportingTree
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.core.ImagePipelineConfig
-import com.squareup.leakcanary.LeakCanary
+import leakcanary.AppWatcher
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -46,13 +46,13 @@ constructor(
 
     fun init() {
 
-        initLeakCanary()
         initFresco()
 
         when (BuildConfig.BUILD_TYPE) {
             DEBUG -> {
                 initTimber(Timber.DebugTree())
                 enableStrictMode()
+                initLeakCanary()
             }
             STAGE -> {
                 initTimber(CrashReportingTree())
@@ -65,11 +65,7 @@ constructor(
     }
 
     private fun initLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(application)) {
-            application.onTerminate()
-        }
-
-        LeakCanary.install(application)
+        AppWatcher.config = AppWatcher.config.copy(watchFragmentViews = true)
     }
 
     private fun initFresco() {
